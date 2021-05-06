@@ -1,0 +1,13 @@
+resources:
+- ../../base/mongo
+- ../../base/redis
+- ../../base/screeps
+
+commonLabels:
+  app.kubernetes.io/part-of: screeps-kind
+
+patches:
+- path: patch-steam-key.yaml
+  target:
+    kind: Deployment
+    name: screeps

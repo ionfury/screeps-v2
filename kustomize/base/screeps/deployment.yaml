@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: screeps
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: screeps
+        image: screepers/screeps-launcher:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MONGO_HOST
+          value: mongo
+        - name: REDIS_HOST
+          value: redis
+        ports:
+        - containerPort: 21025
+          name: admin
